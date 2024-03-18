@@ -269,14 +269,14 @@ class Parser(object):
                 raise ValueError('f90nml: error: Patch filepath cannot be the '
                                  'same as the original filepath.')
             if patch_is_path:
-                self.pfile = open(patch_fname, 'w')
+                self.pfile = open(patch_fname, 'w', encoding="utf8")
             else:
                 self.pfile = patch_fname
         else:
             nml_patch = Namelist()
 
         try:
-            nml_file = open(nml_fname, 'r') if nml_is_path else nml_fname
+            nml_file = open(nml_fname, 'r', encoding="utf8") if nml_is_path else nml_fname
             try:
                 return self._readstream(nml_file, nml_patch)
             except StopIteration:
